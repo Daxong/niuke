@@ -19,8 +19,7 @@ public class makeupTriangle {
 //        System.out.println(str);
         ints = str.split(" ");
         for (int i = 0 ; i < ints.length ; i++ ){
-            int anInt = Integer.parseInt(ints[i]);
-            setArray.add(anInt);
+            setArray.add(Integer.parseInt(ints[i]));
         }
 
         int len = setArray.size();
