@@ -2,8 +2,6 @@ package niuke;
 import java.util.*;
 
 public class CycleVoca {
-
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int row = in.nextInt();
@@ -40,14 +38,13 @@ public class CycleVoca {
                 if (count.contains(i)){
                     continue;
                 }
-                if (n+1 < vocabularys.length) {
-                    if (ss.contains(vocabularys[n+1])) {
-                        flag = 1;
-                        set.add(i);
-                        set.add(n);
-                        map.put(ss,set);
-                    }
+                if (ss.contains(vocabularys[n])) {
+                    flag = 1;
+                    set.add(i);
+                    set.add(n);
+                    map.put(ss,set);
                 }
+
 
             }
 
@@ -62,3 +59,6 @@ public class CycleVoca {
 
     }
 }
+/*
+AC 80%
+ */
