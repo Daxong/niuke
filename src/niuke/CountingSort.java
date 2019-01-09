@@ -7,12 +7,14 @@ public class CountingSort {
         // write code here
         Map<Integer, ArrayList<Integer>> map = new HashMap<>();
 
-        if (A[0] > A[1]) {
-            A[0] = A[0] ^ A[1];
-            A[1] = A[0] ^ A[1];
-            A[0] = A[0] ^ A[1];
+        int min , max;
+        if (A[0] >= A[1]) {
+            min = A[1];
+            max = A[0];
+        }else{
+            min = A[0];
+            max = A[1];
         }
-        int min = A[0], max = A[1];
 
         for (int i = 0 ; i < n ; i++) {
             if (min > A[i]) {
