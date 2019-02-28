@@ -32,13 +32,6 @@ public class maxValue {
             return val;
         }
         int val1,val2;
-        //做
-        if (dp[prev[index]] == 0) {
-            val1 = values[index]+opt(values,prev[index],dp);
-            dp[prev[index]] = val1;
-        }else {
-            val1 = dp[prev[index]];
-        }
         //不做
         if (dp[index-1] == 0) {
             val2 = opt(values,index-1,dp);
@@ -46,6 +39,14 @@ public class maxValue {
         }else {
             val2 = dp[index-1];
         }
+        //做
+        if (dp[prev[index]] == 0) {
+            val1 = values[index]+opt(values,prev[index],dp);
+            dp[prev[index]] = val1;
+        }else {
+            val1 = dp[prev[index]];
+        }
+
 
 //        return (val1 > val2 ? val1 : val2);
         if (val1 > val2) {
