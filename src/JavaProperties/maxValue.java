@@ -7,46 +7,52 @@ public class maxValue {
         int countTask = values.length;//任务个数
         if (index > countTask) throw new Exception("任务规划错误");
 
-        prev[0] = 0;
+        prev[0] = -1;
         //初始化递推关系
-        for (int i = 1; i < prev.length; i++) {
+        for (int i = 0; i < prev.length; i++) {
             for (int n = i; n > 0; n--) {
                 if (arrange[i][0] >= arrange[n-1][1]) {
-                    prev[i] = n;
+                    prev[i] = n-1;
                     break;
                 }else {
-                    prev[i] = 0;
+                    prev[i] = -1;
                 }
             }
         }
 
         //动态规划
         int max = 0;
-        int[] dp = new int[index];
+        int[] dp = new int[index+1];
+        dp[0]=5;
+        for (int i = 1; i < dp.length; i++) {
+            dp[i] = 0;
+        }
         return opt(values,index,dp);
     }
 
     public int opt(int[] values, int index,int[] dp){
-        if (prev[index] == 0) {
+        if (prev[index] == -1) {
+            System.out.println("index :"+(index));
             int val = values[index];
             return val;
         }
         int val1,val2;
-        //不做
-        if (dp[index-1] == 0) {
-            val2 = opt(values,index-1,dp);
-            dp[index-1] = val2;
-        }else {
-            val2 = dp[index-1];
-        }
+
         //做
-        if (dp[prev[index]] == 0) {
+        if (dp[prev[index]] != 0) {
+            val1 = dp[prev[index]];
+        }else {
             val1 = values[index]+opt(values,prev[index],dp);
             dp[prev[index]] = val1;
-        }else {
-            val1 = dp[prev[index]];
         }
+        //不做
+        if (dp[index-1] != 0) {
+            val2 = dp[index-1];
+        }else {
+            val2 = opt(values,index-1,dp);
+            dp[index-1] = val2;
 
+        }
 
 //        return (val1 > val2 ? val1 : val2);
         if (val1 > val2) {
