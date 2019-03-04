@@ -25,6 +25,7 @@ public class MaxValue2 {
     }
 
     public int opt(int index, int[] dp){
+
         if (index > -1) {
             if (dp[index] != 0) return dp[index];
             //走法1 选择当前工作
