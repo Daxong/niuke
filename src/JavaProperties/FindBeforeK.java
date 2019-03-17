@@ -41,10 +41,10 @@ public class FindBeforeK {
         int i = left;
         int j = right;
         while (i != j) {
-            while (nums[i] < piovt && i < j) {
+            while (nums[i] > piovt && i < j) {
                 i++;
             }
-            while (nums[j] >= piovt && i < j) {
+            while (nums[j] <= piovt && i < j) {
                 j--;
             }
             if (i < j) {
