@@ -20,7 +20,7 @@ public class AddTwoNumbers {
         ListNode l4 = new ListNode(5);
         ListNode l5 = new ListNode(6);
         ListNode l6 = new ListNode(4);
-//        l4.next = l5;
+        l4.next = l5;
 //        l5.next = l6;
 
         ListNode head = addTwoNumbers(l1,l4);
@@ -33,48 +33,26 @@ public class AddTwoNumbers {
         ListNode list = new ListNode(0);
         ListNode head = new ListNode(0);
         head.next = list;
-        int carry = 0;
         int sum   = 0;
-        while(l1 != null && l2 != null) {
-            sum = l1.val + l2.val + carry;
-            if(sum > 9 ){
-                list.val = sum -10;
-                carry = 1;
-            }else{
-                list.val = sum;
-                carry = 0;
+        while(l1 != null || l2 != null) {
+            if (l1 != null) {
+                sum += l1.val;
+                l1 = l1.next;
             }
-            l1 = l1.next;
-            l2 = l2.next;
-            if (l1 != null){
-                list.next = new ListNode(0);
 
+            if (l2 != null) {
+                sum += l2.val;
+                l2 = l2.next;
             }
+            list.next = new ListNode(sum % 10);
+            sum /= 10;
             list = list.next;
         }
-        //直接连接剩余链表
-        if(l1 != null ) {
-            list = l1;
-        }else if (l2 != null){
-            list = l2;
-        }
-        //如果此时仍然有进位
-        while(carry == 1) {
-            sum = list.val + 1;
-            if(sum > 9 ){
-                list.val = sum -10;
-                carry = 1;
-                if (list.next == null && carry == 1) {
-                    list.next = new ListNode(0);
-                }
-                list = list.next;
-            }else{
-                list.val = sum;
-                carry = 0;
-            }
+        if (sum == 1) {
+            list.next = new ListNode(1);
         }
 
-        return head.next;
+        return head.next.next;
     }
     static class ListNode {
         int val;
