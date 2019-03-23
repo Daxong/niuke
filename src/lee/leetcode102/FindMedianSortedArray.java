@@ -22,6 +22,7 @@ public class FindMedianSortedArray {
         return (getKth(nums1, 0, nums2, 0, l) + getKth(nums1, 0, nums2, 0, r)) / 2.0;
     }
 
+    //st为数组搜索起点
     private double getKth(int[] nums1, int st1, int[] nums2, int st2, int k) {
         // 边界情况, 如果 nums1数组已经穷尽了, 则只能返回 nums2 中的第 k 个元素
         if(st1 > nums1.length-1) return nums2[st2 + k - 1];
