@@ -10,18 +10,18 @@ import java.util.Map;
  */
 class LengthOfLongestSubstring {
     public int lengthOfLongestSubstring(String s) {
-        Map<Character,Integer> map=new HashMap<Character,Integer>();
-        int max=0;
-        int index=0;
-        for(int i=0;i<s.length();i++){
+        Map<Character,Integer> map = new HashMap<Character,Integer>();
+        int max   = 0;
+        int index = 0;
+        for(int i = 0; i < s.length(); i++){
             if(map.containsKey(s.charAt(i))){
-                index=Math.max(map.get(s.charAt(i))+1,index);
-                if((i-index+1)>max){
-                    max=i-index+1;
+                index=Math.max(map.get(s.charAt(i))+1, index);
+                if((i-index+1)  >max){
+                    max = i-index+1;
                 }
             }else{
-                if((i-index+1)>max){
-                    max=i-index+1;
+                if((i-index+1) > max){
+                    max = i-index+1;
                 }
             }
             map.put(s.charAt(i), i);
