@@ -18,24 +18,21 @@ public class Isbinary {
             if (nums[i].equals("None") ) {
                 continue;
             }
+            int in = Integer.valueOf(nums[i]);
             if (!nums[i*2].equals("None")) {
-                int in = Integer.valueOf(nums[i]);
-                if (!nums[i*2].equals("None")) {
-                    if (in < Integer.valueOf(nums[i*2])){
-                        System.out.println("False");
-                        return;
-                    }
-                }
-
-                if (!nums[i*2+1].equals("None")) {
-                    if (in > Integer.valueOf(nums[i*2])){
-                        System.out.println("False");
-                        return;
-                    }
+                if (in < Integer.valueOf(nums[i*2])){
+                    System.out.println("False");
+                    return;
                 }
 
             }
+            if (!nums[i*2+1].equals("None")) {
+                if (in > Integer.valueOf(nums[i*2])){
+                    System.out.println("False");
+                    return;
+                }
+            }
         }
-        System.out.println("true");
+        System.out.println("True");
     }
 }
