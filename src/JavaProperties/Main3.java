@@ -36,9 +36,6 @@ public class Main3 {
         way(x,y-1,n,m,k,dp);
     }
 
-
-
-
     private static int calc(int nums){
         char[] charsX = String.valueOf(nums).toCharArray();
         Integer sum = 0;
