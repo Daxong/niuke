@@ -6,6 +6,8 @@ import java.util.*;
  * 老虎证券笔试题
  * 环形字符串中寻找包含ABCDE的最短连续子串，返回长度
  * 暴力解法：从头出发遍历寻找再回到头 求得最短长度
+ * bug
+ * 目前方案没有正确找取最短子串
  */
 public class SerialSubString {
     public static void main(String[] args) {
