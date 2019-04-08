@@ -7,13 +7,6 @@ public class CountBinarySamebit{
         String[] nums = scan.nextLine().split(" ");
         int n = Integer.parseInt(nums[0]);
         int m = Integer.parseInt(nums[1]);
-        int a = n, b = m;
-        int count = 0;
-        while (a != 0 && a != 0) {
-            a >>= 1;
-            b >>= 1;
-            count++;
-        }
         int res = n ^ m;
         String resByte = Integer.toBinaryString(res);
         int countSame = 0;
