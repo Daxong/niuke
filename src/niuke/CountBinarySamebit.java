@@ -17,7 +17,7 @@ public class CountBinarySamebit{
         int res = n ^ m;
         String resByte = Integer.toBinaryString(res);
         int countSame = 0;
-        for (int i = count-1; i > -1; i-- ){
+        for (int i = 0; i < resByte.length(); i++ ){
             if(resByte.charAt(i) == '1'){
                 countSame++;
             }
