@@ -2,6 +2,9 @@ package niuke;
 
 import java.util.Scanner;
 
+/**
+ * 求和最小连续子串 返回和
+ */
 public class CalcMin {
     public static void main(String[] args) {
 
