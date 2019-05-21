@@ -1,4 +1,4 @@
-package lee.leetcode102;
+package leetcode;
 
 /**
  * 三七互娱笔试算法题

@@ -1,4 +1,4 @@
-package lee.leetcode102;
+package leetcode;
 
 public class Enumber {
     public static void main(String[] args) {
