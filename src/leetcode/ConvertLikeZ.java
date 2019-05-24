@@ -16,40 +16,31 @@ package leetcode;
  */
 public class ConvertLikeZ {
     public static String convert(String s, int numRows) {
-        int len = s.length();
-        //count为统计分组数
-        int count = len % numRows == 0 ? len / numRows : (len / numRows) + 1;
-
-        double mid = ((numRows-1)*2+1)/2.0;
-        System.out.println(mid);
-        StringBuilder sb = new StringBuilder();
-        int index = 0;
-        for (int j = 0; j <= mid;) {
-                index = j;
-                for (int i = 0; i < count; i++) {
-                    if (index >= len) break;
-                    sb.append(get(s,index));
-                    int tail = (int)(2*(mid - j))+index-1;
-                    if (index == tail || j == 0) {
-                        index += (numRows+1);
-                        continue;
-                    }
-                    if ( tail >= len) break;
-                    sb.append(get(s,tail));
-                    index += (numRows+1);
-                }
-                j++;
+        if(numRows == 1) return s;
+        int[] rowIdx = new int[numRows];
+        char[] chars = new char[s.length()];
+        int n = 0;
+        int burketSize = numRows * 2 - 2;
+        int burketNum = chars.length / burketSize;
+        int rem = chars.length % burketSize;
+        for(int i = 1; i < numRows; i ++){
+            int flag = i == 1 ? 1 : 2;
+            n = flag * burketNum + (rem >= i ? ( 1 + (burketSize - rem + 1 < i ? 1 : 0)) : 0);
+            rowIdx[i] = rowIdx[i-1] + n;
         }
-        System.out.println(sb);
-        return sb.toString();
-    }
-
-    public static char get(String s, int index) {
-        return s.charAt(index);
+        int flag = -1;
+        int curRow = 0;
+        for(char c : s.toCharArray()){
+            chars[rowIdx[curRow]] = c;
+            rowIdx[curRow] = rowIdx[curRow] + 1;
+            if (curRow == 0 || curRow == numRows - 1) flag = -flag;
+            curRow += flag;
+        }
+        return new String(chars);
     }
 
     public static void main(String[] args) {
-        convert("PAYPALISHIRING",3);
+        System.out.println(convert("PAYPALISHIRING",3));
 //        char c = "LEETCODEISHIRING".charAt(0);
 //        System.out.println(c);
     }
