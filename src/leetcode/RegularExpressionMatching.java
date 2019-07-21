@@ -46,9 +46,9 @@ public class RegularExpressionMatching {
      * solution2: matching from right to left,
      * return false if any character not match the current pattern expression
      */
-    public static boolean isMatch2(String s, String p) {
-        for (int i = s.length()-1, j = p.length()-1; i > -1 && j > -1;) {
-
-        }
-    }
+//    public static boolean isMatch2(String s, String p) {
+//        for (int i = s.length()-1, j = p.length()-1; i > -1 && j > -1;) {
+//
+//        }
+//    }
 }
