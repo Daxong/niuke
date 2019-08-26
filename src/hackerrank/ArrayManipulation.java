@@ -1,6 +1,9 @@
 package hackerrank;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -44,6 +47,63 @@ public class ArrayManipulation {
     }
     public static void main(String[] args) throws IOException
     {
-        solve();
+//        solve();
+//        getOneBits(161);
+
+        List sen = Arrays.asList("jim likes mary","kate likes tom","tom does not like jim");
+        List q = Arrays.asList("jim tom","likes");
+        textQueries(sen,q);
+    }
+
+    public static List<Integer> getOneBits(int n) {
+        // Write your code here
+        String binStr = Integer.toBinaryString(n);
+        int cnt = 0;
+        List list = new ArrayList();
+        for (int i = 0; i < binStr.length(); i++) {
+            if ('1' == binStr.charAt(i)) {
+                list.add(i);
+            }
+        }
+        List res = new ArrayList<Integer>();
+        res.add(cnt);
+        res.addAll(list);
+        return res;
+    }
+
+    public static void textQueries(List<String> sentences, List<String> queries) {
+        // Write your code here
+        boolean flag = false;
+        for (int i = 0; i < sentences.size(); i++) {
+            for (int j = 0; j < queries.size(); j++) {
+                String str = queries.get(j);
+                String[] strArr = str.split(" ");
+                if (strArr.length > 0) {
+                    int count = 0;
+                    String string = sentences.get(i);
+                    for (int n = 0; n < strArr.length; n++) {
+
+                        if (sentences.get(i).contains(strArr[n])) {
+                            count++;
+                        }
+                    }
+                    if (count == strArr.length) {
+                        System.out.println(string);
+                        System.out.print(i + " ");
+                        flag = true;
+                    }
+                }else {
+                    if (sentences.get(i).contains(str)) {
+                        System.out.print(i + " ");
+                        flag = true;
+                    }
+
+                }
+                if (flag) {
+                    System.out.println();
+                    flag = false;
+                }
+            };
+        }
     }
 }
